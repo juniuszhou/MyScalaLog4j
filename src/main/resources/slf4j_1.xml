@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="Threshold" value="warning"/>
+            <param name="ConversionPattern" value="%d [%.30t] %c %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="append" value="true"/>
+        <param name="Threshold" value="warning"/>
+        <param name="file" value="logs/learning.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%.30t] %c %p %m%n"/>
+        </layout>
+    </appender>
+    <!--
+    <logger name="com.expedia.www.lpas.trends.bolts.SimpleCountingBolt">
+        <level value="INFO" />
+    </logger>
+-->
+    <root>
+        <priority value="TRACE"/>
+        // this OFF to take effect.
+        <level value="OFF"/>
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="fileAppender"/>
+    </root>
+</log4j:configuration>
